@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import {SalesOrderItem} from "./sales-order-item.js";
 
 export class SalesOrder {
     constructor(customerId) {
@@ -8,11 +9,11 @@ export class SalesOrder {
     }
 
     addItem({productId, quantity, unitPrice}) {
-        this._items.push({ orderId: this._id, productId, quantity, unitPrice});
+        this._items.push( new SalesOrderItem({ orderId: this._id, productId, quantity, unitPrice}));
     }
 
     calculateTotalPrice() {
-        return this._items.reduce((total, item)=> total + item.calculateTotalPrice(), 0);
+        return this._items.reduce((total, item)=> total + item.calculateItemPrice(), 0);
     }
 
     get customerId () {

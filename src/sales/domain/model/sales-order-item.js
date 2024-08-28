@@ -6,7 +6,7 @@ export class SalesOrderItem {
         this._unitPrice = unitPrice;
     }
 
-    CalculateItemPrice(){
+    calculateItemPrice(){
         return this._quantity * this._unitPrice;
     }
 
